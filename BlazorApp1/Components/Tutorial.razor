@@ -1,0 +1,32 @@
+﻿@using BlazorApp1.Model
+
+<div class="tt-content">
+    @if(Steps is not null)
+    {
+        @foreach (var(Step, i) in Steps.Select((value, i) => ( value, i )))
+        {
+            @if (Id == i)
+            {
+                  <TutorialSteps 
+                           Id=i 
+                           Max=Steps.Count()
+                           OnClick="ClickCallback" 
+                           CssClass=@Step.CssClass>
+                                <p>@Step.Text</p>
+                </TutorialSteps> 
+            }
+          
+        }
+    }
+</div>
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public List<TutorialStepModel>? Steps { get; set; } 
+
+    public int Id { get; set; }
+
+    void ClickCallback(int id) => Id = id;
+}

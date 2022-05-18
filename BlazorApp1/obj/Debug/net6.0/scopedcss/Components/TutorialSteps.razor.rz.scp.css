@@ -1,0 +1,48 @@
+.tt-step[b-ibjs6ihc04] {
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    border-radius: 3px;
+    padding: 10px;
+    pointer-events: all;
+    box-shadow: 1px 1px 0px 2px #00000026;
+    position: absolute;
+}
+
+    .tt-step.home[b-ibjs6ihc04] {
+        top: 56px;
+        left: 130px;
+    }
+
+    .tt-step.counter[b-ibjs6ihc04] {
+        top: 110px;
+        left: 160px;
+    }
+
+    .tt-step.fetch[b-ibjs6ihc04] {
+        top: 170px;
+        left: 180px;
+    }  
+
+    .tt-step[b-ibjs6ihc04]:before {
+        content: "";
+        position: absolute;
+        top: 30px;
+        left: -30px;
+        width: 0;
+        transform: rotateZ(90deg);
+        border-top: 20px solid #ebebeb;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+    }
+    .tt-step[b-ibjs6ihc04]:after {
+        content: "";
+        position: absolute;
+        top: 31px;
+        left: -26px;
+        width: 0;
+        transform: rotateZ(90deg);
+        border-top: 18px solid white;
+        border-left: 18px solid transparent;
+        border-right: 18px solid transparent;
+    }

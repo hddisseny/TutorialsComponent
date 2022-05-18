@@ -1,0 +1,41 @@
+﻿<div class="tt-step @CssClass" data-id=@Id>
+    <div>@ChildContent</div> 
+    @if(Id>0)
+    {
+        <button class="tt-step-prev" @onclick="(()=> OnClick_Prev(Id))" >Prev</button>
+    }
+   @if(Id<(Max-1))
+    {
+        <button class="tt-step-next"  @onclick="(()=> OnClick_Next(Id))">Next</button>
+    }
+    
+</div>
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public string? CssClass { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnClick { get; set; }
+
+    [Parameter]
+    public int Id { get; set; }
+
+    [Parameter]
+    public int Max { get; set; }
+
+    private void OnClick_Prev(int id)
+    {
+        if(id>0)
+            id--;
+        OnClick.InvokeAsync(id);
+    }
+    private void OnClick_Next(int id)
+    {
+        if(id<(Max-1))
+            id++;
+        OnClick.InvokeAsync(id);
+    }
+}

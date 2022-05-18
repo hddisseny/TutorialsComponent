@@ -1,0 +1,32 @@
+﻿@using BlazorApp1.Components
+@using BlazorApp1.Model
+
+@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<Tutorial Steps=@StepsApp />
+
+@code{
+ 
+    public List<TutorialStepModel> StepsApp = new List<TutorialStepModel>();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+       
+        StepsApp.Add(new TutorialStepModel() {
+            Text = "Home page!",
+            CssClass = "home" });
+        StepsApp.Add(new TutorialStepModel() {
+            Text = "It's a counter, only a counter...",
+            CssClass = "counter" });
+        StepsApp.Add(new TutorialStepModel() {
+            Text = "Get random data",
+            CssClass = "fetch" });   
+    }
+}
