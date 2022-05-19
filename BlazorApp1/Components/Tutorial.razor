@@ -1,6 +1,10 @@
 ﻿@using BlazorApp1.Model
-
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime;
+ 
 <div class="tt-content">
+
+
     @if(Steps is not null)
     {
         @foreach (var(Step, i) in Steps.Select((value, i) => ( value, i )))
@@ -19,6 +23,7 @@
         }
     }
 </div>
+ 
 @code {
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
@@ -29,4 +34,14 @@
     public int Id { get; set; }
 
     void ClickCallback(int id) => Id = id;
+ 
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        
+             await JSRuntime.InvokeVoidAsync("sdsd", Steps?[Id].SnapToClass, "mariano" );
+         
+    }
+     
 }
