@@ -21,28 +21,47 @@
 
 //function GetClassElementPosition(classElement) {
 
+    //console.log(document.getElementsByClassName(h));
+    //console.log(getOffset(document.getElementsByClassName(h)))
 //}
+var snapToClassCursor;
 
-window.addEventListener('resize', start);
-var h;
+function OnWindowResize() {
+    console.log(snapToClassCursor);
 
-function start() {
-    console.log(document.getElementsByClassName(h));
-    console.log(getOffset(document.getElementsByClassName(h)))
-   console.log(h)
-}
-window.sdsd = (symbol, m) => {
-    h = symbol
-    start()
+    var elementSelected = document.getElementsByClassName(snapToClassCursor);
+    var viewportOffset = elementSelected[0].getBoundingClientRect();
+    // these are relative to the viewport, i.e. the window
+    var top = viewportOffset.top;
+    var left = viewportOffset.left;
+    var bottom = viewportOffset.bottom;
+    var right = viewportOffset.right;
+    var elementStep = document.getElementsByClassName("tt-step");
+    console.log("------");
+    console.log("elementSelected");
+    console.log(elementSelected);
+    console.log("viewportOffset");
+    console.log(viewportOffset);
+    console.log("top");
+    console.log(top);
+    console.log("left");
+    console.log(left);
+    console.log("bottom");
+    console.log(bottom);
+    console.log("right");
+    console.log(right);
+    console.log("------");
+
+    var fright = right + 65;
+    elementStep[0].style.left = fright + "px";
+    var ftop = top - 30;
+    elementStep[0].style.top = ftop + "px";
+    return snapToClassCursor;
+} window.addEventListener('resize', OnWindowResize);
+
+
+window.OnBlazorCall = (snapToClass ) => {
+    snapToClassCursor = snapToClass;
+    OnWindowResize();
 };
-
-function getOffset(el) {
-    var _x = 0;
-    var _y = 0;
-    while (el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
-        _x += el.offsetLeft - el.scrollLeft;
-        _y += el.offsetTop - el.scrollTop;
-        el = el.offsetParent;
-    }
-    return { top: _y, left: _x };
-}
+ 

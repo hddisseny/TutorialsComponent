@@ -33,14 +33,14 @@
 
     public int Id { get; set; }
 
-    void ClickCallback(int id) => Id = id;
  
+    void ClickCallback(int id) => Id = id;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
+    { 
         await base.OnAfterRenderAsync(firstRender);
         
-             await JSRuntime.InvokeVoidAsync("sdsd", Steps?[Id].SnapToClass, "mariano" );
+            await JSRuntime.InvokeAsync<string>("OnBlazorCall", Steps?[Id].SnapToClass );
          
     }
      
